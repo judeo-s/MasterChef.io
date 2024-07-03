@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MasterChef.io - Share & Discover Recipes</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit-code.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="container header">
+      <a href="#" class="logo">MasterChef.io</a>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Browse Recipes</a></li>
+          <li><a href="#">Submit Recipe</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="search-bar">
+        <input type="text" placeholder="Search for recipes">
+        <button type="button">Search<i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </header>
+{% block content %}{% endblock %}
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 MasterChef.io All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
