@@ -37,10 +37,10 @@ def index():
         recipes = None
         if search:
             recipes = api.search_recipes(search, 20, APP_ID, APP_KEY)
-        return render_template('search_results.html', recipes=recipes)
+        return render_template('search_results.html', recipes=recipes, results=search)
     
     choice = random.choice(foods_and_snacks)
-    recipes = api.search_recipes(choice, 4, APP_ID, APP_KEY)
+    recipes = api.search_recipes(choice, 3, APP_ID, APP_KEY)
     return render_template('index.html', recipes=recipes)
 
 @app.route('/browse', methods=['GET', 'POST'], strict_slashes=False)
@@ -51,7 +51,7 @@ def browse():
         recipes = None
         if search:
             recipes = api.search_recipes(search, 20, APP_ID, APP_KEY)
-        return render_template('search_results.html', recipes=recipes)
+        return render_template('search_results.html', recipes=recipes, results=search)
 
     all_recipes = []  
     def fetch_recipes(food):
@@ -70,20 +70,12 @@ def browse():
     random.shuffle(all_recipes)
     return render_template('browse_recipes.html', recipes=all_recipes)
 
-@app.route('/login', methods=['GET', 'POST'], strict_slashes=False)
+@app.route('/login', strict_slashes=False)
 def login():
     """returns the login page of the project"""
-
-    if request.method == 'POST':
-        search = request.form.get('search')
-        recipes = None
-        if search:
-            recipes = api.search_recipes(search, 20, APP_ID, APP_KEY)
-        return render_template('search_results.html', recipes=recipes)
-    
     return render_template('login.html')
 
-@app.route('/registration', methods=['GET', 'POST'], strict_slashes=False)
+@app.route('/register', strict_slashes=False)
 def registration():
     """returns the registration page of the project"""
     return render_template('registration.html')
@@ -96,7 +88,7 @@ def about():
         recipes = None
         if search:
             recipes = api.search_recipes(search, 20, APP_ID, APP_KEY)
-        return render_template('search_results.html', recipes=recipes)
+        return render_template('search_results.html', recipes=recipes, results=search)
     return render_template('about.html')
 
 if __name__ == "__main__":
