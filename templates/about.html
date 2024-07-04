@@ -1,78 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../static/images/RecipeLogo.jpeg" type="image/x-icon">
-    <link rel="stylesheet" href="../static/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <title>Express Eat</title>
-</head>
-<body>
-     <!--- Navigation Bar -->
-     <div class="about">
-        <div class="header">
-            <nav class="nav-bar">
-                <img src="../static/images/Logo.png" class="brand-name">
-                <a href="#" class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </a>
-                <div class="menu-bar">
-                    <ul>
-                        <li><a href="./index.html">Home</a></li>
-                        <li><a href="./about.html">About</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
-                    </ul>
-                </div>
-            </nav>
-
-        <!--About Me Section-->
-            <div class="wrapper">
-                <div class="row">
-                    <div class="about-content">
-                        <h1>About Us</h1>
-                        <h3>Welcome to Express Eat</h3>
-                        <p>G&R Sizzling, formerly known as Express Eat, started as a local business in Makati City, providing delicious meals to the citizens, employees, and students in the area. Our goal has always been to offer a diverse range of flavorful dishes that cater to various tastes and preferences.
-                         </p>
-                        <p>As G&R Sizzling transitions to a more systematic approach of delivering foods to our clients and customers, Express Eat continues to be the heart of our kitchen operations. Our platform features a wide variety of recipes not only from the Philippines but also from different countries around the world. With our user-friendly search bar, visitors can easily find the recipe they desire.</p>
-
-                        <p>We take pride in providing detailed instructions on how to prepare each recipe, ensuring that even novice cooks can create delicious meals with ease. As G&R Sizzling expands its horizons and ventures into new culinary territories, we remain committed to providing our users with exceptional recipes and culinary experiences.  </p>
-                    
-                        <p>We invite you to explore our website and discover the perfect recipe to satisfy your cravings. Welcome to G&R Sizzling, where culinary delights await!
-</p>
-                    </div>
-                    <div class="img-me">
-                        <img class="img-me" src="../static/images/" alt="Christian Medallada">
-                    </div>
-                </div>
-            </div>
+{% extends 'base.html' %}
+{% block content %}
+<main>
+    <section class="about">
+      <div class="container">
+        <h2>About Us</h2>
+        <p>Welcome to MasterChef.io! We are a community of passionate food enthusiasts who love to share and discover new recipes. Our mission is to bring people together through the joy of cooking and eating. Whether you're a professional chef or a home cook, you'll find inspiration and support here.</p>
+        <h3>Our Story</h3>
+        <p>MasterChef.io was founded in 2024 with the goal of creating a platform where food lovers can share their favorite recipes, discover new dishes, and connect with like-minded individuals. We believe that cooking is an art, and everyone has something unique to contribute to the culinary world.</p>
+        <h3>Meet the Team</h3>
+        <div class="team">
+          <div class="team-member">
+            <img src="../static/images/team-member1.jpg" alt="Team Member 1">
+            <h4>Abdullah Ouahmane</h4>
+            <p>Co-Founder & Lead Developer</p>
+          </div>
+          <div class="team-member">
+            <img src="../static/images/team-member2.jpg" alt="Team Member 2">
+            <h4>Jude Osam-Sackey</h4>
+            <p>Co-Founder & Developer</p>
+          </div>
         </div>
-    </div>
-
-    <!--Footer-->
-    
-    <div class="footer">
-        <div class="social-btn">
-            <a href="https://www.facebook.com/Cmedsss" target="_blank" ><i class="	fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/tiaanmeds/" target="_blank" ><i class="	fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/tianmeds/" target="_blank"><i class="	fab fa-linkedin"></i></a>
-            <a href="https://github.com/TianMeds" target="_blank" "><i class="	fab fa-github"></i></a>
-        </div>
-            <div class="quick-bar">
-                <a href="./index.html">Home</a>
-                <a href="./about.html">About</a>
-                <a href="./contact.html">Contact</a>
-            </div>
-        <p>Copyright &copy; 2022 Christian Medallada. All right reserved</p>  
-    </div>
-    
-    <!--Ending of Footer-->
-
-    <!--Javascript-->
-<script src="../static/index.js"></script>
-    
-</body>
-</html>
+      </div>
+    </section>
+  </main>
+{% endblock %}      

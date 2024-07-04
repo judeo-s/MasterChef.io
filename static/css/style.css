@@ -130,7 +130,7 @@ nav a:hover {
 
 .featured-recipes .container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
 }
 
@@ -170,6 +170,16 @@ nav a:hover {
   font-size: 14px;
   color: #888;
   margin-bottom: 15px;
+}
+
+.ingredient-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  text-align: left;
+}
+
+.ingredient-list li {
+  margin-bottom: 5px;
 }
 
 .call-to-action {
@@ -235,10 +245,97 @@ footer p {
   }
 
   .featured-recipes .container {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
+    gap: 20px;
   }
 
   .recipe-card img {
     height: 150px;
+    width: 500px;
   }
+}
+
+
+.about {
+  background: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.about .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.about h3 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #4070f4;
+}
+
+.team {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.team-member {
+  text-align: center;
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.team-member h4 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.team-member p {
+  font-size: 16px;
+  color: #888;
+}
+
+.loading-overlay {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #4070f4; /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

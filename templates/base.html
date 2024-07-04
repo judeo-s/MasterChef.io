@@ -10,26 +10,41 @@
 <body>
   <header>
     <div class="container header">
-      <a href="#" class="logo">MasterChef.io</a>
+      <a href="#" class="logo">[  MasterChef.io  ]</a>
       <nav>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Browse Recipes</a></li>
+          <li><a href="{{url_for('index')}}">Home</a></li>
+          <li><a href="{{url_for('browse')}}">Browse Recipes</a></li>
           <li><a href="#">Submit Recipe</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="{{url_for('about')}}">About</a></li>
         </ul>
       </nav>
       <div class="search-bar">
-        <input type="text" placeholder="Search for recipes">
+        <form method="POST">
+        <input type="text" name="search" placeholder="Search for recipes">
         <button type="button">Search<i class="fas fa-search"></i></button>
+        </form>
       </div>
     </div>
   </header>
+
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loader"></div>
+  </div>
 {% block content %}{% endblock %}
   <footer>
     <div class="container">
       <p>&copy; 2024 MasterChef.io All rights reserved.</p>
     </div>
   </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("loadingOverlay").style.display = "flex";
+    });
+
+    window.addEventListener("load", function() {
+        document.getElementById("loadingOverlay").style.display = "none";
+    });
+  </script>
 </body>
 </html>
