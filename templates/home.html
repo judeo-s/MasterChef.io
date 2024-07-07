@@ -3,7 +3,8 @@
   <main>
     <section class="hero">
       <div class="container">
-        <h1>Discover Delicious Recipes</h1>
+        <h1>Welcome, {{ current_user.username }}!</br>
+          Discover Delicious Recipes</h1>
         <p>Explore a world of culinary creations and find inspiration for your next meal.</p>
         <a href="{{url_for('browse')}}" class="btn">Browse Recipes</a>
       </div>
