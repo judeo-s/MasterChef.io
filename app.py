@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from forms import LoginForm, RegistrationForm
 from werkzeug.security import generate_password_hash, check_password_hash
-import random, jsonify
+import random
 import concurrent.futures
 import api
 import time
