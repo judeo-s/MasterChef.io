@@ -22,9 +22,6 @@ MasterChef.io is a web platform designed for food enthusiasts to share, discover
   - Co-Founder & Developer
   - Focused on frontend development, UI/UX design, and API integrations.
   
-- **[Your Name]**
-  - Co-Founder & [Your Role]
-  - Contributed to frontend development, project management, and user experience enhancements.
 
 ## Technologies Used
 
