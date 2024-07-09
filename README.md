@@ -1,6 +1,6 @@
 # MasterChef.io
 
-![MasterChef.io Banner](banner_image_url_here)
+
 
 MasterChef.io is a web platform designed for food enthusiasts to share, discover, and celebrate culinary creations from around the world. Whether you're a seasoned chef or a passionate home cook, MasterChef.io provides a vibrant community space to explore new recipes, connect with like-minded individuals, and showcase your culinary expertise.
 
@@ -43,7 +43,7 @@ MasterChef.io is a web platform designed for food enthusiasts to share, discover
 
 ## Architecture
 
-![MasterChef.io Architecture Diagram](architecture_diagram_image_url_here)
+
 
 The architecture of MasterChef.io follows a client-server model with Flask handling backend logic and data management. HTML, CSS, and JavaScript are used for frontend development to create a responsive and interactive user experience. The Edamam API integration allows for comprehensive recipe search and data enrichment.
 
