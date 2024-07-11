@@ -1,4 +1,6 @@
 import requests
+import json
+import concurrent.futures
 
 APP_ID = "0b16882d"
 APP_KEY = "9a04913ab5bb2dfa66bf19ae617b1624"
@@ -41,3 +43,19 @@ def search_recipes(query, number):
     else:
         print(f"Error: {response.status_code}")
         return None
+    
+def api_cache():
+    all_recipes = []
+    def fetch_recipes(food):
+        return search_recipes(food, 6)
+      
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        future_to_food = {executor.submit(fetch_recipes, food): food for food in foods_and_snacks}
+        for future in concurrent.futures.as_completed(future_to_food):
+            food = future_to_food[future]
+            try:
+                recipes = future.result()
+                all_recipes.extend(recipes)
+            except Exception as exc:
+                print(f'Food {food} generated an exception: {exc}')
+    return json.dumps(all_recipes)

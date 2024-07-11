@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MasterChef.io - Share & Discover Recipes</title>
-  <link rel="stylesheet" href="../static/css/style.css">
-  <script src="../static/js/main.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   <script src="https://kit.fontawesome.com/your-fontawesome-kit-code.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -17,13 +17,13 @@
           <li><a href="{{url_for('home')}}">Home</a></li>
           <li><a href="{{url_for('browse')}}">Browse Recipes</a></li>
           <li><a href="{{url_for('about')}}">About</a></li>
-          <li><a href="{{url_for('logout')}}">Logout</a></li>
+          <li><a href="{{url_for('profile')}}">Profile</a></li>
         </ul>
       </nav>
       <div class="search-bar">
-        <form method="POST">
-        <input type="text" name="search" placeholder="Search for recipes">
-        <button type="button">Search<i class="fas fa-search"></i></button>
+        <form method="POST" action="">
+          <input type="text" name="search" placeholder="Search for recipes">
+          <button type="submit">Search<i class="fas fa-search"></i></button>
         </form>
       </div>
     </div>
@@ -32,7 +32,9 @@
   <div class="loading-overlay" id="loadingOverlay">
     <div class="loader"></div>
   </div>
-{% block content %}{% endblock %}
+
+  {% block content %}{% endblock %}
+
   <footer>
     <div class="container">
       <p>&copy; 2024 MasterChef.io All rights reserved.</p>
@@ -40,11 +42,11 @@
   </footer>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("loadingOverlay").style.display = "flex";
+      document.getElementById("loadingOverlay").style.display = "flex";
     });
 
     window.addEventListener("load", function() {
-        document.getElementById("loadingOverlay").style.display = "none";
+      document.getElementById("loadingOverlay").style.display = "none";
     });
   </script>
 </body>

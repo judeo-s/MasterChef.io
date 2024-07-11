@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 class RegistrationForm(FlaskForm):
@@ -22,7 +22,13 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 class RecipeForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
-    ingredients = StringField('Ingredients', validators=[DataRequired()])
-    instructions = StringField('Instructions', validators=[DataRequired()])
-    submit = SubmitField('Add Recipe')
+    title = StringField('Title', validators=[DataRequired()],
+                        render_kw={"placeholder": "Title"})
+    image_url = StringField('Image URL', validators=[DataRequired()],
+                            render_kw={"placeholder": "URL to Image"})
+    description = TextAreaField('Description', render_kw={"placeholder": "Description (optional)"})
+    ingredients = TextAreaField('Ingredients', validators=[DataRequired()],
+                                render_kw={"placeholder": "Ingredients"})
+    instructions_url = StringField('Instructions', validators=[DataRequired()],
+                                 render_kw={"placeholder": "Url to Instructions"})
+    submit = SubmitField('Submit Recipe')

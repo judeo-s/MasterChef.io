@@ -20,6 +20,7 @@
                     <img src="{{recipe['recipe']['image']}}" alt="Recipe 1">
                 </a>
                 <h3><a href="{{recipe['recipe']['url']}}">{{recipe['recipe']['label']}}</a></h3>
+                <p>Source: {{recipe['recipe']['source']}}</p>
                 <p>Ingredients:</p>
                 <ul class="ingredient-list">
                     {% for ingredient in recipe['recipe']['ingredientLines'] %}
@@ -36,7 +37,7 @@
       <div class="container">
         <h2>Share Your Culinary Creations</h2>
         <p>Join our community and submit your favorite recipes.</p>
-        <a href="#" class="btn">Submit Recipe</a>
+        <a href="{{url_for('submit_recipe')}}" class="btn">Submit Recipe</a>
       </div>
     </section>
   </main>
