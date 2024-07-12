@@ -1,9 +1,10 @@
 import requests
 import json
 import concurrent.futures
+import os
 
-APP_ID = "0b16882d"
-APP_KEY = "9a04913ab5bb2dfa66bf19ae617b1624"
+APP_ID = os.getenv("APP_ID")
+APP_KEY = os.getenv("APP_KEY")
 
 foods_and_snacks = [
     "Apple","Banana","Orange","Grapes","Strawberry","Blueberry","Raspberry","Blackberry","Watermelon","Pineapple",
