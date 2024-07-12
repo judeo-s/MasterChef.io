@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,11 @@
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   <script src="https://kit.fontawesome.com/your-fontawesome-kit-code.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
   <header>
     <div class="container header">
-      <a href="#" class="logo">[  MasterChef.io  ]</a>
+      <a href="#" class="logo">[ MasterChef.io ]</a>
       <nav>
         <ul>
           <li><a href="{{url_for('home')}}">Home</a></li>
@@ -41,13 +43,14 @@
     </div>
   </footer>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("loadingOverlay").style.display = "flex";
     });
 
-    window.addEventListener("load", function() {
+    window.addEventListener("load", function () {
       document.getElementById("loadingOverlay").style.display = "none";
     });
   </script>
 </body>
+
 </html>
