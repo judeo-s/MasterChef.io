@@ -7,10 +7,11 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from forms import LoginForm, RegistrationForm, RecipeForm
 from werkzeug.security import generate_password_hash, check_password_hash
-import random
 import api
-import os
+import random
 import json
+import os
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '9a04913ab5bb2dfa66bf19ae617b1624'
@@ -26,8 +27,10 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(150), unique=True, nullable=False)
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
-    profile_image_url = db.Column(db.String(500), default='static/images/default_profiles.jpg')
+    profile_image_url = db.Column(
+        db.String(500), default='static/images/default_profiles.jpg')
     recipes = db.relationship('Recipe', backref='author', lazy=True)
+
 
 class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -38,9 +41,11 @@ class Recipe(db.Model):
     instructions = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -48,18 +53,21 @@ def register():
         return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        existing_user = user = User.query.filter_by(email=form.email.data).first()
+        existing_user = user = User.query.filter_by(
+            email=form.email.data).first()
         if existing_user:
             flash('Email already exists.', 'danger')
             return redirect(url_for('register'))
         else:
             hashed_password = generate_password_hash(form.password.data)
-            user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+            user = User(username=form.username.data,
+                        email=form.email.data, password=hashed_password)
             db.session.add(user)
             db.session.commit()
             flash('Registered successfully!', 'success')
             return redirect(url_for('logout'))
     return render_template('register.html', form=form)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -75,10 +83,12 @@ def login():
         flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', form=form)
 
+
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('login'))
+
 
 @app.route('/', methods=['GET', 'POST'], strict_slashes=False)
 @login_required
@@ -94,10 +104,11 @@ def home():
         if search:
             recipes = api.search_recipes(search, 20)
         return render_template('search_results.html', recipes=recipes, results=search)
-    
+
     random.shuffle(all_recipes)
     recipes = all_recipes[:3]
     return render_template('home.html', recipes=recipes)
+
 
 @app.route('/browse', methods=['GET', 'POST'], strict_slashes=False)
 def browse():
@@ -116,12 +127,14 @@ def browse():
     random.shuffle(all_recipes)
     return render_template('browse_recipes.html', recipes=all_recipes)
 
+
 @app.route('/profile')
 @login_required
 def profile():
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     return render_template('profile.html', user=current_user)
+
 
 @app.route('/about', methods=['GET', 'POST'], strict_slashes=False)
 def about():
@@ -136,6 +149,7 @@ def about():
             recipes = api.search_recipes(search, 20)
         return render_template('search_results.html', recipes=recipes, results=search)
     return render_template('about.html')
+
 
 @app.route('/submit', methods=['GET', 'POST'])
 @login_required
@@ -180,7 +194,7 @@ def edit_recipe(recipe_id):
     if recipe.author != current_user:
         flash('You do not have permission to edit this recipe.', 'danger')
         return redirect(url_for('profile'))
-    
+
     form = RecipeForm()
     if request.method == 'GET':
         form.title.data = recipe.title
@@ -201,6 +215,7 @@ def edit_recipe(recipe_id):
 
     return render_template('edit_recipe.html', form=form, recipe=recipe)
 
+
 @app.route('/delete_recipe/<int:recipe_id>', methods=['POST'])
 @login_required
 def delete_recipe(recipe_id):
@@ -213,10 +228,13 @@ def delete_recipe(recipe_id):
     db.session.commit()
     flash('Recipe deleted successfully!', 'success')
     return redirect(url_for('profile'))
+
+
 def create_tables():
     """Create database tables"""
     with app.app_context():
         db.create_all()
+
 
 def setup_cache():
     global all_recipes
@@ -230,6 +248,7 @@ def setup_cache():
         with open("instance/cache.json", "r") as f:
             data = f.read()
         all_recipes = json.loads(data)
+
 
 if __name__ == "__main__":
     create_tables()
